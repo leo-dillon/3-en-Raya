@@ -11,8 +11,6 @@ Clona el Repositorio: Clona este repositorio en tu máquina local usando git clo
 Instalación de Dependencias: Ejecuta npm install para instalar todas las dependencias necesarias.
 Iniciar la Aplicación: Utiliza <strong> npm start </strong> para iniciar la aplicación en tu navegador.
 ¡Juega!: Disfruta de una partida de Tres en Raya contra un amigo y demuestra tus habilidades estratégicas.
-## Contribuciones
-Las contribuciones son bienvenidas y apreciadas. Si tienes ideas para mejorar el juego, puedes abrir un problema o enviar una solicitud de extracción. Antes de contribuir, por favor, consulta las pautas de contribución del proyecto.
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.
