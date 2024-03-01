@@ -11,7 +11,7 @@ import { WinnerModal } from './componentes/WinnerModal'
 function App() {
   const [board, setBoard] = useState(() => {
     const boardGuardado = window.localStorage.getItem('board')
-    return (boardGuardado && !hayGanador(JSON.parse(boardGuardado))&&!juegoTerminado(JSON.parse(boardGuardado)))
+    return (boardGuardado && !hayGanador(JSON.parse(boardGuardado)) && !juegoTerminado(JSON.parse(boardGuardado)))
       ? JSON.parse(boardGuardado)
       : Array(9).fill(null)
   })
