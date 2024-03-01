@@ -1,0 +1,75 @@
+:root{
+
+}
+*{
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+body{
+  background-color: #cacaca;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main{
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .game{
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+main .game .casilla,
+main .turno .casilla{
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: grid;
+  place-content: center;
+  border: 1px solid black;
+  background-color: #595959;
+}
+main .game .casilla .casilla_contenido,
+main .turno .casilla .casilla_contenido,
+main section.contenedorWinner .casilla_contenido,
+main section.contenedorWinner .casilla_contenido{
+  font-size: 2rem;
+  color: white;
+  line-height: 28px;
+}
+main .turno .casilla.seleccionado{
+  background-color: #000000;
+}
+main section.turno{
+  display: flex;
+  gap: 12px 24px ;
+}
+main section.contenedorWinner{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+}
+main section.contenedorWinner div h2{
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+
+}
