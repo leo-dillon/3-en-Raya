@@ -26,7 +26,7 @@ function App() {
     setWinner(null)
   }
   const cambiarValor = (index) => {
-    if(board[index] || winner)return
+    if( board[index] || winner ) return
 
     const nuevoBoard = [...board]
     nuevoBoard[index] = turno
