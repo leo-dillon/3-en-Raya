@@ -1,5 +1,10 @@
 :root{
-
+  --color-azul-100: rgb(34, 53, 147);
+  --color-cyan-100: rgb(228, 215, 165);
+  --color-cyan-80: rgb(228, 215, 165, 80%);
+  --color-black-100: #000;
+  --color-green-100: rgb(1, 194, 1);
+  --color-green-80: rgb(1, 194, 1, 80%);
 }
 *{
   border: 0;
@@ -7,21 +12,34 @@
   margin: 0;
   font-size: 16px;
   box-sizing: border-box;
+  font-family: 'Anta';
 }
 body{
-  background-color: #cacaca;
-  color: black;
+  background-image: radial-gradient(#696ab7 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-color: #0c0c0c;
+  color: var(--color-cyan-80);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 main{
+  background-color: rgba(0, 15, 17, 0.5);
   width: 100%;
   max-width: 1200px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+main h1{
+  font-size: 4rem;
+  text-wrap: balance;
+  text-align: center;
+  letter-spacing: 4px;
+  color: var(--color-green-100);
 }
 main .game{
   margin: 24px 0;
@@ -47,8 +65,22 @@ main section.contenedorWinner .casilla_contenido{
   color: white;
   line-height: 28px;
 }
-main .turno .casilla.seleccionado{
-  background-color: #000000;
+main .turno .puntaje{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  width: 64px;
+  height: 24px;
+  gap: 8px;
+  transition: box-shadow .3s ease-out;
+}
+main .turno .puntaje span{
+  line-height: 16px;
+  font-size: 1rem;
+}
+main .turno .puntaje.seleccionado{
+  box-shadow: 0 0 12px var(--color-cyan-100);
 }
 main section.turno{
   display: flex;
@@ -59,8 +91,8 @@ main section.contenedorWinner{
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 200px;
-  height: 250px;
+  width: 300px;
+  height: 350px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -68,8 +100,57 @@ main section.contenedorWinner{
   background-color: black;
 }
 main section.contenedorWinner div h2{
-  color: white;
+  color: var(--color-cyan-100);
   text-align: center;
   font-size: 2rem;
 
+}
+main section.descripcion{
+  width: 100%;
+  max-width: 800px;
+  margin-top: 32px;
+  padding: 0 20px;
+}
+main section.descripcion h3{
+  letter-spacing: 4px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-green-100);
+}
+main section.descripcion p{
+  font-family: 'Monserrat';
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 28px;
+  text-wrap: pretty;
+}
+main button{
+  margin: 24px 0;
+  font-size: 1.3rem;
+  padding: 4px 12px;
+  background-color: #000000;
+  color: var(--color-cyan-100);
+  border-radius: 12px;
+  border: 1px solid var(--color-azul-100);
+  cursor: pointer;
+  transition: .3s scale ease-out;
+}
+main button:hover{
+  scale: 1.2;
+}
+@media (700px > width){
+  main h1{
+    font-size: 2.5rem;
+  }
+}
+@media (500px > width){
+  main h1{
+    font-size: 1.5rem;
+  }
+  main section.descripcion h3{
+    font-size: 1.3rem;
+  }
 }

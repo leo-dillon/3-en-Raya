@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import confetti from 'canvas-confetti'
 import { Casilla } from './componentes/Casillas'
 import { TURNS } from './constantes'
 import { hayGanador, juegoTerminado } from './logic/board'
 import { WinnerModal } from './componentes/WinnerModal'
+import { Puntaje } from './componentes/Puntaje'
 
 
 
@@ -20,10 +21,18 @@ function App() {
     return (turnoGuardado) ? JSON.parse(turnoGuardado) : TURNS.O
   })
   const [winner, setWinner] = useState(null)
+  const [puntaje, setPuntaje] = useState({ x: 0, o: 0})
   const resetarJuego = () => {
     setBoard(Array(9).fill(null))
     setTurno(TURNS.O)
     setWinner(null)
+    sumarPuntos()
+  }
+  const reiniciarJuego = () => {
+    setBoard(Array(9).fill(null))
+    setTurno(TURNS.O)
+    setWinner(null)
+    setPuntaje({ x: 0, o: 0})
   }
   const cambiarValor = (index) => {
     if( board[index] || winner ) return
@@ -46,34 +55,55 @@ function App() {
       setWinner(false)
     }
   }
+  const sumarPuntos = () => {
+    const PX = puntaje.x
+    const PO = puntaje.o
+    if(winner === '❌'){
+      setPuntaje({ x: PX+1, o: PO})
+    }else if(winner === '🔴'){
+      setPuntaje({ x: PX, o: PO+1})
+    }
+  }
   return (
     <>
       <main>
         <h1>
-          3 en Raya
+          🔴 Tic Tac Toe ❌
         </h1>
+        <button onClick={reiniciarJuego}> 
+          Resetear
+        </button>
         <section className='game'>
           {
-            board.map( ( a,index )  => {
+            board.map( ( text,index )  => {
               return(
-              <Casilla 
-                key={index}
-                index={index}
-                cambiarValor={cambiarValor}
+                <Casilla 
+                  key={index}
+                  index={index}
+                  cambiarValor={cambiarValor}
                 >
-                {a}
-              </Casilla>
+                  {text}
+                </Casilla>
               )
             })
           }
         </section>
         <section className='turno'>
-          <Casilla esSeleccionado={turno === '❌'}>
+          <Puntaje esSeleccionado={turno === '❌'} valor={puntaje.x}>
             {TURNS.x}
-          </Casilla>
-          <Casilla esSeleccionado={turno === '🔴'}>
+          </Puntaje>
+          <Puntaje esSeleccionado={turno === '🔴'} valor={puntaje.o}>
             {TURNS.O}
-          </Casilla>
+          </Puntaje>
+        </section>
+        <section className='descripcion'>
+          <h3>¿ Como se juega ?</h3>
+          <p>
+            Se juega en un tablero de casillas de 3x3. Para ganar, sé el primer jugador en conseguir 3 en raya ( en sentido horizontal, vertical o diagonal ).
+          </p>
+          <p> 
+            Si juegas con la X, tu rival jugará con el O, o viceversa. La partida termina una vez que no queda ninguna casilla libre.
+          </p>
         </section>
         <WinnerModal winner={winner} resetarJuego={resetarJuego}/>
       </main>
